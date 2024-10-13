@@ -33,3 +33,8 @@ EMAIL_SERVER_PASSWORD=your-app-password<br />
 ### 送信元メールアドレス
 
 EMAIL_FROM=your-email@gmail.com<br />
+
+## EMAIL_SERVER_PASSWORD
+
+EMAIL_SERVER_PASSWORDはアカウントのパスワードではなく、アプリパスワードを別途アカウントで発行する必要がある<br />
+<a href="https://myaccount.google.com/apppasswords">https://myaccount.google.com/apppasswords</a><br />
