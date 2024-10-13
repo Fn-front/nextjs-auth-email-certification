@@ -27,12 +27,14 @@ const options: NextAuthOptions = {
           },
         });
 
+        const encodedUrl = encodeURI(url);
+
         const mailOptions = {
           from: process.env.EMAIL_FROM,
           to: identifier,
           subject: 'Your sign-in link for MyApp',
           html: `<p>Hello,</p>
-                 <p>Click <a href="${url}">this link</a> to sign in.</p>
+                 <p>Click <a href="${encodedUrl}">this link</a> to sign in.</p>
                  <p>This link will expire in 10 minutes.</p>`,
         };
 
