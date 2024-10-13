@@ -11,14 +11,15 @@ export function setToken(email: string, token: string): void {
   cache.set(email, { token, expires });
 }
 
-export function getToken(email: string): string | null {
+export function getToken(email: string) {
   const data = cache.get(email);
+
   if (!data) return null;
   if (Date.now() > data.expires) {
     cache.delete(email);
     return null;
   }
-  return data.token;
+  return data;
 }
 
 export function deleteToken(email: string): void {

@@ -52,6 +52,22 @@ const options: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
+  callbacks: {
+    async session({ session, token }) {
+      // セッションに正しいメールを設定
+      if (token.email) {
+        session.user!.email = token.email;
+      }
+      return session;
+    },
+    async jwt({ token, user }) {
+      // トークンにメールを設定
+      if (user?.email) {
+        token.email = user.email;
+      }
+      return token;
+    },
+  },
   // その他のNextAuth設定
 };
 

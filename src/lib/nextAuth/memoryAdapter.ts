@@ -1,6 +1,6 @@
 // lib/memoryCacheAdapter.ts
 
-import { Adapter } from 'next-auth/adapters';
+import { Adapter, VerificationToken } from 'next-auth/adapters';
 import { setToken, getToken, deleteToken } from './memoryCache';
 
 export const MemoryCacheAdapter: Adapter = {
@@ -8,12 +8,28 @@ export const MemoryCacheAdapter: Adapter = {
     setToken(identifier, token);
     return { identifier, token, expires };
   },
-  async useVerificationToken({ identifier, token }) {
-    const storedToken = getToken(identifier);
-    if (storedToken === token) {
-      deleteToken(identifier);
-      return { identifier, token };
+  async useVerificationToken({
+    identifier,
+    token,
+  }): Promise<VerificationToken | null> {
+    console.log('useVerificationToken');
+
+    const data = getToken(identifier);
+
+    if (!data) {
+      console.log('dataなし');
+      return null;
     }
+
+    /* eslint-disable */
+    const { token: storedToken, expires }: any = data;
+
+    // トークンと一致し、有効期限内であることを確認
+    if (storedToken === token && expires > Date.now()) {
+      deleteToken(identifier);
+      return { identifier, token, expires: new Date(expires) };
+    }
+
     return null;
   },
   // 他のメソッドもモックするが、必要ない場合は空の関数として実装
