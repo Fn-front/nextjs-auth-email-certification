@@ -27,14 +27,18 @@ const options: NextAuthOptions = {
           },
         });
 
-        const encodedUrl = encodeURI(url);
+        // URLのパラメータを操作する
+        const parsedUrl = new URL(url);
+        parsedUrl.searchParams.delete('callbackUrl'); // callbackUrlパラメータを削除
+
+        const cleanUrl = parsedUrl.toString(); // シンプルなURLに変換
 
         const mailOptions = {
           from: process.env.EMAIL_FROM,
           to: identifier,
           subject: 'Your sign-in link for MyApp',
           html: `<p>Hello,</p>
-                 <p>Click <a href="${encodedUrl}">this link</a> to sign in.</p>
+                 <p>Click <a href="${cleanUrl}">this link</a> to sign in.</p>
                  <p>This link will expire in 10 minutes.</p>`,
         };
 
