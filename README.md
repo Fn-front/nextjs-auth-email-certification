@@ -8,6 +8,8 @@
 lib/nextAuth/memoryCache<br />
 lib/nextAuth/memoryAdaptor
 
+### Chromeだとフィッシング詐欺扱いされるので注意（Vivaldiとか別のブラウザで見ると良さそう）
+
 ## Gmail SMTPサーバーの設定手順
 
 Gmailアカウントでアプリパスワードを生成
