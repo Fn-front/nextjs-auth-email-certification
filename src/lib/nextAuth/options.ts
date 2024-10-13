@@ -31,7 +31,7 @@ const options: NextAuthOptions = {
         const parsedUrl = new URL(url);
         parsedUrl.searchParams.delete('callbackUrl'); // callbackUrlパラメータを削除
 
-        const cleanUrl = ''; // シンプルなURLに変換
+        const cleanUrl = parsedUrl.toString(); // シンプルなURLに変換
 
         const mailOptions = {
           from: process.env.EMAIL_FROM,
