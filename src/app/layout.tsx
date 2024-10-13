@@ -10,8 +10,8 @@ const noto = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: 'テンプレ',
-  description: 'テンプレ',
+  title: 'Gmail認証',
+  description: 'Gmail認証',
 };
 
 export default function RootLayout({
