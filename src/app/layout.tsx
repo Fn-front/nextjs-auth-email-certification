@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
-
+import { NextAuthProvider } from '@/lib/nextAuth/nextAuthProvider';
 import '@/styles/app.scss';
 
 const noto = Noto_Sans_JP({
@@ -21,13 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ja'>
-      <body className={noto.className}>
-        <div className='l_global_container'>
-          <main className='l_main'>
-            <div className='l_container'>{children}</div>
-          </main>
-        </div>
-      </body>
+      <NextAuthProvider>
+        <body className={noto.className}>
+          <div className='l_global_container'>
+            <main className='l_main'>
+              <div className='l_container'>{children}</div>
+            </main>
+          </div>
+        </body>
+      </NextAuthProvider>
     </html>
   );
 }
