@@ -42,7 +42,7 @@ export const MemoryCacheAdapter: Adapter = {
   async getUserByEmail(email) {
     return null; // 必要に応じて実装
   },
-  async updateUser(user) {
+  async updateUser(user: any) {
     return user; // 実際のデータベースは使用せず、そのままユーザー情報を返す
   },
   async deleteUser(userId) {
