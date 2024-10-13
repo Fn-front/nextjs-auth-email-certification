@@ -36,10 +36,10 @@ const options: NextAuthOptions = {
         const mailOptions = {
           from: process.env.EMAIL_FROM,
           to: identifier,
-          subject: 'サインインするためのメールです',
-          html: `<p>こんにちは</p>
-                 <p>クリックしてください <a href="${cleanUrl}">this link</a></p>
-                 <p>このリンクは10分で効果が切れます</p>`,
+          subject: 'このメールはnext-authのメール認証用テストです',
+          html: `<p>サインインの時の参考用です</p>
+                 <p>このリンクをクリックしてください <a href="${cleanUrl}">this link</a></p>
+                 <p>リンクは10分で効果が切れます</p>`,
         };
 
         try {
