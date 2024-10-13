@@ -36,10 +36,10 @@ const options: NextAuthOptions = {
         const mailOptions = {
           from: process.env.EMAIL_FROM,
           to: identifier,
-          subject: 'Your sign-in link for MyApp',
-          html: `<p>Hello,</p>
-                 <p>Click <a href="${cleanUrl}">this link</a> to sign in.</p>
-                 <p>This link will expire in 10 minutes.</p>`,
+          subject: 'サインインするためのメールです',
+          html: `<p>こんにちは</p>
+                 <p>クリックしてください <a href="${cleanUrl}">this link</a></p>
+                 <p>このリンクは10分で効果が切れます</p>`,
         };
 
         try {
